@@ -1,0 +1,23 @@
+@keyframes fadeOut {
+    0% { opacity: 1;}
+    99% { opacity: 0.01;width: 100%; height: 100%;}
+    100% { opacity: 0;width: 0; height: 0;}
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+@keyframes notificationfadeout {
+    0% { opacity: 0;}
+    10% { opacity: 1;}
+    80% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+@keyframes loadingbackground {
+    0% { background: var(--ColorPrimary);}
+    50% { background: var(--ColorSecondary);}
+    100% { background: var(--ColorPrimary);}
+}

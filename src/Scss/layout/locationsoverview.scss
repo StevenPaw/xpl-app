@@ -1,0 +1,64 @@
+.section.section--locationsoverview{
+    .section_content{
+
+        .search_bar{
+            margin: 0 auto 20px auto;
+        }
+
+        .experience_list{
+            padding-left: 2px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .experience_entry{
+                background-color: var(--ColorWhite);
+                border-radius: 20px;
+                display: flex;
+                height: 100%;
+                overflow: hidden;
+                transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+                box-shadow: 0 0 20px 0 rgba(0,0,0,0.1);
+
+                .experience_entry_image{
+                    width: 30%;
+                    padding: 0;
+                    transform: scale(1.02);
+                    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+                    background-color: var(--ColorPrimary);
+                    clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+                    background-size: cover;
+                }
+
+                .experience_entry_content{
+                    width: 70%;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+
+                &.show{
+                    opacity: 1;
+                    max-height: 400px;
+                }
+
+                &.hide{
+                    opacity: 0;
+                    max-height: 0;
+                }
+
+                @include media("<=medium") {
+                    .experience_entry_image{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+
+        .source{
+            display: block;
+            font-size: 12px;
+        }
+    }
+}

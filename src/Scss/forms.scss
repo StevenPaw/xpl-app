@@ -1,0 +1,73 @@
+fieldset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+}
+
+.field{
+    width: 100%;
+    max-width: $maxWidthContent;
+}
+
+label{
+    display: inline-block;
+    margin: 10px 0 2px 10px ;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+input{
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--ColorPrimaryTrans);
+    background-color: var(--ColorWhite);
+    box-shadow: inset 0 0 5px 0 rgba(0,0,0,0.3);
+    padding: 5px 10px;
+
+    &[type="submit"]{
+        margin: 10px 0px 30px 0px;
+        background-color: var(--ColorPrimary);
+        color: $ColorWhite;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+
+        &:hover{
+            background-color: var(--ColorSecondary);
+        }
+    }
+
+    &[type="checkbox"]{
+        box-shadow: 0 0 0px 0 rgba(0,0,0,0.3);
+        width: auto;
+        display: inline-block;
+    }
+
+    &[type="text"]{
+        color: var(--ColorBlack);
+    }
+
+    &[type="date"]{
+        color: var(--ColorBlack);
+    }
+}
+
+textarea{
+    width: 100%;
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--ColorWhite);
+    box-shadow: inset 0 0 10px 0 rgba(0,0,0,0.3);
+    padding: 5px 10px;
+}
+
+select{
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 10px auto 20px auto;
+    border: 1px solid var(--ColorPrimary);
+    color: var(--ColorPrimary);
+}

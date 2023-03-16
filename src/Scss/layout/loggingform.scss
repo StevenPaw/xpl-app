@@ -1,0 +1,140 @@
+.section.section--loggingform{
+    position: relative;
+    .section_content{
+
+        margin-bottom: 200px;
+
+        h1,h2{
+            text-align: center;
+            margin: 20px 0 10px 0;
+        }
+
+        .logging_form{
+
+            .logging_group{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-evenly;
+                gap: 0px;
+                margin-bottom: 20px;
+
+                label{
+                    margin: 0;
+                }
+
+                .group_entry{
+                    background-color: var(--ColorWhite);
+                    border-radius: 20px;
+                    box-shadow: 0 0 20px 0 rgba(0,0,0,0.1);
+                    width: 22%;
+                    margin: 5px 0;
+
+                    color: var(--ColorPrimary);
+                    position: relative;
+                    overflow: hidden;
+                    display: block;
+
+                    label{
+                        padding: 10px;
+                        color: var(--ColorSecondary);
+                        text-align: center;
+                        font-size: 10px;
+                        height: 100%;
+                        display: block;
+                    }
+
+                    input[type="checkbox"] {
+                        position: absolute;
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                    }
+
+                    &:has(input[type="checkbox"]:checked){
+                        background-color: var(--ColorPrimary);
+                        color: var(--ColorWhite);
+                        label{
+                            color: var(--ColorWhite);
+                        }
+                    }
+                }
+
+                @include media(">medium") {
+                    flex-wrap: nowrap;
+                    gap: 20px;
+                }
+
+                .train_selector{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    &.hidden{
+                        opacity: 0;
+                        max-height: 0;
+                        overflow: hidden;
+                    }
+                }
+
+                &.train{
+                    flex-direction: column;
+                }
+
+            }
+
+            input[type="submit"] {
+                mask-image: url("../../icons/add.svg");
+                color: transparent;
+                background-color: var(--ColorPrimary);
+                position: fixed;
+                right: 10px;
+                bottom: 100px;
+                width: 84px;
+                height: 84px;
+                border-radius: 50%;
+                margin: 0;
+                transition: opacity 0.2s ease-in-out;
+
+                &.clicked{
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+
+            .xpl_logo{
+                color: transparent;
+                position: fixed;
+                right: 10px;
+                bottom: 100px;
+                width: 84px;
+                height: 84px;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+                pointer-events: none;
+
+                svg{
+                    position: relative;
+                    width: 84px;
+                    height: 84px;
+                    transform-origin: 50% 50%;
+                    animation: rotate 15s linear infinite;
+
+                    #block_center_empty{
+                        transform-origin: 50% 50%;
+                        animation: rotate 5s linear infinite;
+                    }
+
+                    #blocks_filled{
+                        transform-origin: 50% 50%;
+                        animation: rotate 10s linear infinite;
+                    }
+                }
+
+                &.clicked{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

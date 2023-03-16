@@ -1,0 +1,75 @@
+.location_list{
+    padding-left: 2px;
+    display: flex;
+    flex-direction: column;
+    margin: -10px 0;
+
+    .location_entry_wrap{
+        position: relative;
+        opacity: 1;
+
+        max-height: 400px;
+        transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+        .location_entry{
+            background-color: var(--ColorWhite);
+            border-radius: 20px;
+            display: flex;
+            height: 100%;
+            box-shadow: 0 0 20px 0 rgba(0,0,0,0.1);
+            margin: 10px 0;
+            align-items: center;
+
+            .location_entry_image{
+                width: 180px;
+                aspect-ratio: 1;
+                padding: 0;
+                transform: scale(1.05);
+                border-radius: 20px;
+                box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+                background-color: var(--ColorPrimary);
+                background-size: cover;
+            }
+
+            .location_entry_content{
+                width: 70%;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+
+
+            @include media("<=medium") {
+                .location_entry_image{
+                    width: 20%;
+                    margin-left: 15px;
+                    border-radius: 10px;
+                }
+            }
+        }
+
+        .location_favouritemarker{
+            color: var(--ColorPrimary);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            @include media(">medium") {
+                right: 30px;
+            }
+        }
+
+        &.hide{
+            overflow: hidden;
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+    }
+}
