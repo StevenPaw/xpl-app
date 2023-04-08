@@ -10,6 +10,7 @@ import LocationsListPage from "./LocationsListPage/LocationsListPage";
 import ExperiencesDetailPage from "./ExperiencesDetailPage/ExperiencesDetailPage";
 import Header from "./Structure/Header";
 import Footer from "./Structure/Footer";
+import LoginPage from "./Authentication/LoginPage";
 import "./Scss/styles.scss";
 
 const App = () => {
@@ -47,20 +48,6 @@ const App = () => {
         localStorage.setItem("data-updated", Date.now());
     };
 
-    const updateLogs = () => {
-        fetch(baseurl + "api/v1/App-ExperienceLogging-LogEntry.json")
-            .then((response) => response.json())
-            .then((data) => {
-
-                const logs = data.items;
-
-                logs.forEach((log) => {
-                    localStorage.setItem("xpl-log_" + log.ID, JSON.stringify(log));
-                });
-                console.log("Locations updated", logs);
-            });
-    }
-
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -78,7 +65,7 @@ const App = () => {
         }
 
         if(isOnline) {
-            updateLogs();
+            //updateLogs();
             //If the user is online, check if the data is up to date
             if (localStorage.getItem("data-updated") == null || localStorage.getItem("data-updated") < Date.now() - 360000) {
                 updateData();
@@ -97,6 +84,10 @@ const App = () => {
         {
             path: starturl + "places/",
             element: <LocationsListPage starturl={starturl} userPos={userPos}/>,
+        },
+        {
+            path: starturl + "login/",
+            element: <LoginPage />,
         },
         {
             path: starturl + "places/:linkTitle",
