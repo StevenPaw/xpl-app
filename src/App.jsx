@@ -11,6 +11,7 @@ import ExperiencesDetailPage from "./ExperiencesDetailPage/ExperiencesDetailPage
 import Header from "./Structure/Header";
 import Footer from "./Structure/Footer";
 import LoginPage from "./Authentication/LoginPage";
+import AddLogPage from "./AddLogPage/AddLogPage";
 import "./Scss/styles.scss";
 
 const App = () => {
@@ -35,7 +36,7 @@ const App = () => {
             console.log("Locations updated", locations);
         });
 
-        fetch(baseurl + "api/v1/App-ExperienceDatabase-Experience.json")
+        fetch(baseurl + "app-api/experiences")
             .then((response) => response.json())
             .then((data) => {
                 const experiences = data.items;
@@ -87,7 +88,11 @@ const App = () => {
         },
         {
             path: starturl + "login/",
-            element: <LoginPage />,
+            element: <LoginPage starturl={starturl} baseurl={baseurl}/>,
+        },
+        {
+            path: starturl + "addLog/:linkTitle",
+            element: <AddLogPage starturl={starturl} baseurl={baseurl}/>,
         },
         {
             path: starturl + "places/:linkTitle",

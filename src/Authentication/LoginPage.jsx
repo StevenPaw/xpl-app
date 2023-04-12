@@ -1,34 +1,47 @@
 import React, { useState } from 'react';
-
-const login = (url, payload) => {
-    var _headers = {
-        headers: {
-            "Content-type" : "application/json;charset=utf-8"
-        },
-        body: JSON.stringify(payload)
-    };
-
-    let result = fetch(url, _headers);
-    console.log(result);
-    if(result.status === 200) {
-        return result;
-    }
-}
+import { encode } from "base-64";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+
+    const login = (payload) => {
+
+        let url = 'http://localhost/experiencelogger/public/app-api/login';
+        let username = payload.Username;
+        let password = payload.Password;
+
+        console.log("Username", username);
+        console.log("Password", password);
+    
+        var options = {
+            method: 'POST',
+            headers: new Headers ({
+                'Authorization': 'Basic ' + encode(username + ":" + password).toString('base64'),
+                'Content-Type': 'application/json'
+            })
+        };
+    
+        let result = fetch(url, options)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Data", data);
+                return data;
+            }
+        );
+        return result;
+    }
     
     const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {
-            uname: email,
-            password: password
+            Username: email,
+            Password: password
         }
-        const result = login('http://localhost/experiencelogger/public/app-api/login', payload);
+        const result = login(payload);
         if(result.status === 200) {
-            console.log(result);
+            console.log(result["Content"]);
         } else {
             setError('Login fehlgeschlagen');
         }
