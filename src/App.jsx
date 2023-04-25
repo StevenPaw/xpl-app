@@ -24,7 +24,7 @@ const App = () => {
     const activeLink = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
 
     const updateData = () => {
-        fetch(baseurl + "api/v1/App-ExperienceDatabase-ExperienceLocation.json")
+        fetch(baseurl + "app-api/experiences")
         .then((response) => response.json())
         .then((data) => {
 
