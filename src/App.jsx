@@ -24,14 +24,14 @@ const App = () => {
     const activeLink = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
 
     const updateData = () => {
-        fetch(baseurl + "app-api/experiences")
+        fetch(baseurl + "app-api/places")
         .then((response) => response.json())
         .then((data) => {
 
-            const locations = data.items;
+            const locations = data;
 
             locations.forEach((location) => {
-                localStorage.setItem("xpl-location__" + location.LinkTitle, JSON.stringify(location));
+                localStorage.setItem("xpl-location__" + location.Title, JSON.stringify(location));
             });
             console.log("Locations updated", locations);
         });
