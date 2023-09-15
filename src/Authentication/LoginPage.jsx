@@ -18,7 +18,7 @@ const LoginForm = () => {
         var options = {
             method: 'POST',
             headers: new Headers ({
-                'Authorization': 'Basic ' + encode(username + ":" + password).toString('base64'),
+                'Authorization': 'Basic ' + btoa(username + ":" + password),
                 'Content-Type': 'application/json'
             })
         };

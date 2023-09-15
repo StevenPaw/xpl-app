@@ -28,7 +28,8 @@ const App = () => {
         .then((response) => response.json())
         .then((data) => {
 
-            const locations = data;
+            const locations = data.items;
+            console.log(locations);
 
             locations.forEach((location) => {
                 localStorage.setItem("xpl-location__" + location.Title, JSON.stringify(location));
