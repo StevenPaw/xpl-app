@@ -6,7 +6,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const login = (payload) => {
+    const login = async (payload) => {
 
         let url = 'http://localhost/experiencelogger/public/app-api/login';
         let username = payload.Username;
@@ -18,13 +18,14 @@ const LoginForm = () => {
         var options = {
             method: 'POST',
             headers: new Headers ({
-                'Authorization': 'Basic ' + btoa(username + ":" + password),
+                // 'Authorization': 'Basic ' + btoa(username + ":" + password),
                 'Content-Type': 'application/json'
-            })
+            }),
+            body: JSON.stringify(payload)
         };
     
         let result = fetch(url, options)
-            .then((response) => response.json())
+            .then((response) => response.text())
             .then((data) => {
                 console.log("Data", data);
                 return data;
@@ -33,14 +34,17 @@ const LoginForm = () => {
         return result;
     }
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = {
             Username: email,
             Password: password
         }
-        const result = login(payload);
-        if(result.status === 200) {
+        const result = await login(payload);
+
+        alert(result);
+        
+        if(result === 'ok') {
             console.log(result["Content"]);
         } else {
             setError('Login fehlgeschlagen');

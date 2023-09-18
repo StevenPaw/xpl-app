@@ -28,7 +28,7 @@ const App = () => {
         .then((response) => response.json())
         .then((data) => {
 
-            const locations = data.items;
+            const locations = data.items.toArray();
             console.log(locations);
 
             locations.forEach((location) => {
